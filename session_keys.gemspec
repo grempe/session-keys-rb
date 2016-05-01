@@ -25,20 +25,19 @@ Gem::Specification.new do |spec|
 
   spec.description = <<-EOF
     SessionKeys is a cryptographic tool for the deterministic generation of
-    NaCl compatible [Curve25519](https://cr.yp.to/ecdh.html) encryption and
-    [Ed25519](http://ed25519.cr.yp.to) digital signature keys.
+    NaCl compatible Curve25519 encryption and Ed25519 digital signature keys.
 
     The strength of the system lies in the fact that the keypairs are derived from
     passing an identifier, such as a username or email address, and a high-entropy
-    passphrase through the `SHA256` hash and the `scrypt` key derivation
+    passphrase through the SHA256 hash and the scrypt key derivation
     functions. This means that no private key material need ever be stored to disk.
     The generated keys are deterministic; for any given ID, password, and
     strength combination the same keys will always be returned.
 
-    The generated ID is passed through `SHA256` and `scrypt` and is derived from
+    The generated ID is passed through SHA256 and scrypt and is derived from
     only the ID parameter your provide and a common salt.
 
-    The password is also passed through `SHA256` and `scrypt` and NaCl encryption
+    The password is also passed through SHA256 and scrypt and NaCl encryption
     and signing keypairs are derived from the combination of the stretched ID,
     your password, and a common salt.
   EOF
