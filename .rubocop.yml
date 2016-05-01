@@ -231,7 +231,7 @@ Metrics/ClassLength:
 Metrics/CyclomaticComplexity:
   Description: A complexity metric that is strongly correlated to the number of test
     cases needed to validate a method.
-  Enabled: true
+  Enabled: false
   Max: 6
 
 Metrics/LineLength:
