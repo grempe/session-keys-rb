@@ -56,11 +56,12 @@ $ gem install session_keys
 The SessionKeys gem is cryptographically signed. To be sure the gem you install hasn’t
 been tampered with you can install it using the following method:
 
-Add my public key (if you haven’t already) as a trusted certificate
+Add required public keys (if you haven’t already) as trusted certificates
 
 ``` text
 # Caveat: Gem certificates are trusted globally, such that adding a
 # cert.pem for one gem automatically trusts all gems signed by that cert.
+gem cert --add <(curl -Ls https://raw.githubusercontent.com/cryptosphere/rbnacl/master/bascule.cert)
 gem cert --add <(curl -Ls https://raw.github.com/grempe/session-keys-rb/master/certs/gem-public_cert_grempe.pem)
 ```
 
