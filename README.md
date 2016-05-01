@@ -1,5 +1,6 @@
 # SessionKeys
 
+[![Gem Version](https://badge.fury.io/rb/session-keys-rb.svg)](https://badge.fury.io/rb/session-keys-rb)
 [![Dependency Status](https://gemnasium.com/badges/github.com/grempe/session-keys-rb.svg)](https://gemnasium.com/github.com/grempe/session-keys-rb)
 [![Build Status](https://travis-ci.org/grempe/session-keys-rb.svg?branch=master)](https://travis-ci.org/grempe/session-keys-rb)
 [![Coverage Status](https://coveralls.io/repos/github/grempe/session-keys-rb/badge.svg?branch=master)](https://coveralls.io/github/grempe/session-keys-rb?branch=master)
