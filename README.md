@@ -1,5 +1,11 @@
 # SessionKeys
 
+[![Dependency Status](https://gemnasium.com/badges/github.com/grempe/session-keys-rb.svg)](https://gemnasium.com/github.com/grempe/session-keys-rb)
+[![Build Status](https://travis-ci.org/grempe/session-keys-rb.svg?branch=master)](https://travis-ci.org/grempe/session-keys-rb)
+[![Coverage Status](https://coveralls.io/repos/github/grempe/session-keys-rb/badge.svg?branch=master)](https://coveralls.io/github/grempe/session-keys-rb?branch=master)
+[![Code Climate](https://codeclimate.com/github/grempe/session-keys-rb/badges/gpa.svg)](https://codeclimate.com/github/grempe/session-keys-rb)
+[![Inline docs](http://inch-ci.org/github/grempe/session-keys-rb.svg?branch=master)](http://inch-ci.org/github/grempe/session-keys-rb)
+
 SessionKeys is a cryptographic tool for the deterministic generation of
 NaCl compatible [Curve25519](https://cr.yp.to/ecdh.html) encryption and
 [Ed25519](http://ed25519.cr.yp.to) digital signature keys.
