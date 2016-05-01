@@ -106,10 +106,7 @@ module SessionKeys
     # of user identifiers from looking up users on the system quickly even if
     # provided with a local copy of the DB.
     id_sha256_bytes = RbNaCl::Hash.sha256(id.bytes.pack('C*'))
-
-    id_sha256_pepper_bytes = RbNaCl::Hash.sha256(
-      "#{id}#{id.length}#{PEPPER}#{PEPPER.length}".bytes.pack('C*')
-    )
+    id_sha256_pepper_bytes = RbNaCl::Hash.sha256("#{id}#{id.length}#{PEPPER}#{PEPPER.length}".bytes.pack('C*'))
 
     id_scrypt_hex = RbNaCl::PasswordHash.scrypt(
       id_sha256_bytes,
@@ -126,10 +123,7 @@ module SessionKeys
     # SHA-256 to scrypt. If this is a concern, passwords should be pre-hashed
     # before being hashed using scrypt.
     password_sha256_bytes = RbNaCl::Hash.sha256(password.bytes.pack('C*'))
-
-    password_sha256_pepper_bytes = RbNaCl::Hash.sha256(
-      "#{id_scrypt_hex}#{id_scrypt_hex.length}#{PEPPER}#{PEPPER.length}".bytes.pack('C*')
-    )
+    password_sha256_pepper_bytes = RbNaCl::Hash.sha256("#{id_scrypt_hex}#{id_scrypt_hex.length}#{PEPPER}#{PEPPER.length}".bytes.pack('C*'))
 
     # Derive SCRYPT_DIGEST_SIZE_PASSWORD secret bytes. They will be split
     # into 32 Byte chunks to serve as deterministic seeds for ID or key
