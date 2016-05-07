@@ -54,9 +54,9 @@ module SessionKeys
   # Deterministically generates a collection of derived encryption key material from
   # a provided id and password. Uses SHA256 and scrypt for key derivation.
   #
-  # @param id [String] a unique UTF-8 String identifier such as a username or
+  # @param id [String] a unique US-ASCII or UTF-8 encoded String identifier such as a username or
   #   email address. Max length 256 characters.
-  # @param password [String] a cryptographically strong UTF-8 password or
+  # @param password [String] a cryptographically strong US-ASCII or UTF-8 encoded password or
   #   passphrase. Max length 256 characters.
   # @param strength [Symbol] the desired strength of the key derivation. Can be
   #   the symbols :interactive or (:sensitive).
@@ -65,16 +65,16 @@ module SessionKeys
   # @return [Hash] returns a Hash of keys and derived key material.
   # @raise [ArgumentError] if invalid arguments are provided.
   def self.generate(id, password, strength = :sensitive, min_password_entropy = 75)
-    unless id.is_a?(String) && id.encoding.name == 'UTF-8'
-      raise ArgumentError, 'invalid id, not a UTF-8 string'
+    unless id.is_a?(String) && ['US-ASCII', 'UTF-8'].include?(id.encoding.name)
+      raise ArgumentError, 'invalid id, not a US-ASCII or UTF-8 string'
     end
 
     unless id.length.between?(1,256)
       raise ArgumentError, 'invalid id, must be between 1 and 256 characters in length'
     end
 
-    unless password.is_a?(String) && password.encoding.name == 'UTF-8'
-      raise ArgumentError, 'invalid password, not a UTF-8 string'
+    unless password.is_a?(String) && ['US-ASCII', 'UTF-8'].include?(password.encoding.name)
+      raise ArgumentError, 'invalid password, not a US-ASCII or UTF-8 string'
     end
 
     # Enforce max length only due to Zxcvbn taking a *long* time to

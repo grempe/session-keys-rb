@@ -26,9 +26,9 @@ describe SessionKeys do
 
     it 'must raise an ArgumentError if an invalid ID type was provided' do
       err = ->{ SessionKeys.generate(nil, 'my', :interactive, 1) }.must_raise ArgumentError
-      err.message.must_match(/invalid id, not a UTF-8 string/)
+      err.message.must_match(/invalid id, not a US-ASCII or UTF-8 string/)
       err = ->{ SessionKeys.generate('a'.force_encoding('BINARY'), 'my', :interactive, 1) }.must_raise ArgumentError
-      err.message.must_match(/invalid id, not a UTF-8 string/)
+      err.message.must_match(/invalid id, not a US-ASCII or UTF-8 string/)
     end
 
     it 'must raise an ArgumentError if an invalid ID length was provided' do
@@ -54,9 +54,9 @@ describe SessionKeys do
 
     it 'must raise an ArgumentError if an invalid password type was provided' do
       err = ->{ SessionKeys.generate('someId', nil, :interactive, 1) }.must_raise ArgumentError
-      err.message.must_match(/invalid password, not a UTF-8 string/)
+      err.message.must_match(/invalid password, not a US-ASCII or UTF-8 string/)
       err = ->{ SessionKeys.generate('someId', 'bin'.force_encoding('BINARY'), :interactive, 1) }.must_raise ArgumentError
-      err.message.must_match(/invalid password, not a UTF-8 string/)
+      err.message.must_match(/invalid password, not a US-ASCII or UTF-8 string/)
     end
 
     it 'must raise an ArgumentError if an invalid password length was provided' do
