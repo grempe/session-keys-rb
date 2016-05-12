@@ -13,3 +13,4 @@ require 'session_keys'
 
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'securerandom'
