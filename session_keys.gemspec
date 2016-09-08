@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   end
 
   spec.summary = <<-EOF
-    SessionKeys generates a deterministic user ID and NaCl encryption/signing
+    SessionKeys generates deterministic user IDs and NaCl encryption/signing
     keypairs from an identifier, such as a username or email address, a
     password, and a strength value.
   EOF
@@ -27,19 +27,12 @@ Gem::Specification.new do |spec|
     SessionKeys is a cryptographic tool for the deterministic generation of
     NaCl compatible Curve25519 encryption and Ed25519 digital signature keys.
 
-    The strength of the system lies in the fact that the keypairs are derived from
+    The strength of the system is rooted in the fact that the keypairs are derived from
     passing an identifier, such as a username or email address, and a high-entropy
-    passphrase through the SHA256 hash and the scrypt key derivation
-    functions. This means that no private key material need ever be stored to disk.
-    The generated keys are deterministic; for any given ID, password, and
-    strength combination the same keys will always be returned.
-
-    The generated ID is passed through SHA256 and scrypt and is derived from
-    only the ID parameter your provide and a common salt.
-
-    The password is also passed through SHA256 and scrypt and NaCl encryption
-    and signing keypairs are derived from the combination of the stretched ID,
-    your password, and a common salt.
+    passphrase through the SHA256 one-way hash and the scrypt key derivation
+    functions. This means that no private key material need ever be writter to
+    disk or transmitted. The generated keys are deterministic; for any given ID,
+    password, and strength combination the same keys will always be returned.
   EOF
 
   spec.homepage      = 'https://github.com/grempe/session-keys-rb'

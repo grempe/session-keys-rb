@@ -1,4 +1,4 @@
-# SessionKeys
+# sessionKeys (Ruby)
 
 [![Gem Version](https://badge.fury.io/rb/session_keys.svg)](https://badge.fury.io/rb/session_keys)
 [![Dependency Status](https://gemnasium.com/badges/github.com/grempe/session-keys-rb.svg)](https://gemnasium.com/github.com/grempe/session-keys-rb)
@@ -7,29 +7,19 @@
 [![Code Climate](https://codeclimate.com/github/grempe/session-keys-rb/badges/gpa.svg)](https://codeclimate.com/github/grempe/session-keys-rb)
 [![Inline docs](http://inch-ci.org/github/grempe/session-keys-rb.svg?branch=master)](http://inch-ci.org/github/grempe/session-keys-rb)
 
-SessionKeys is a cryptographic tool for the deterministic generation of
-NaCl compatible [Curve25519](https://cr.yp.to/ecdh.html) encryption and
-[Ed25519](http://ed25519.cr.yp.to) digital signature keys.
+`sessionKeys` is a cryptographic tool for the generation of unique user IDs,
+and NaCl compatible [Curve25519](https://cr.yp.to/ecdh.html) encryption, and
+[Ed25519](http://ed25519.cr.yp.to) digital signature keys using Ruby.
 
-The strength of the system lies in the fact that the keypairs are derived from
-passing an identifier, such as a username or email address, and a high-entropy
-passphrase through the `SHA256` hash and the `scrypt` key derivation
-functions. This means that no private key material need ever be stored to disk.
-The generated keys are deterministic; for any given ID, password, and
-strength combination the same keys will always be returned.
+It is compatible with [grempe/session-keys-js](https://github.com/grempe/session-keys-js)
+which can generates identical IDs and crypto keys using Javascript when given the
+same username and passphrase values. Both libraries have extensive tests to
+ensure they remain interoperable.
 
-The generated ID is passed through `SHA256` and `scrypt` and is derived from
-only the ID parameter your provide and a common salt.
+The strength of the system lies in the fact that the keypairs are derived from passing an identifier such as a username or email address, and a high-entropy passphrase through the SHA256 cryptographic one-way hash function, and then 'stretching' that username/password into strong key material using the scrypt key derivation function.
 
-The password is also passed through `SHA256` and `scrypt` and NaCl encryption
-and signing keypairs are derived from the combination of the stretched ID,
-your password, and a common salt.
-
-## WARNING : BETA CODE
-
-This code is new and has not yet been tested in production. Use at your own risk.
-The interface should be fairly stable now but should not be considered fully
-stable until v1.0.0 is released.
+For an overview of the security design, please see the README for the companion
+project [grempe/session-keys-js](https://github.com/grempe/session-keys-js)
 
 ## Installation
 
@@ -51,6 +41,40 @@ Or install it yourself as:
 $ gem install session_keys
 ```
 
+## Usage
+
+``` ruby
+SessionKeys.generate('user@example.com', 'my strong passphrase')
+
+{
+  id: '...',
+  byte_keys: [...],
+  hex_keys: [...],
+  nacl_encryption_key_pairs: [...],
+  nacl_encryption_key_pairs_base64: [...],
+  nacl_signing_key_pairs: [...],
+  nacl_signing_key_pairs_base64: [...],
+  process_time: 250
+}
+
+```
+
+Security Note : Each Array will contain eight values. Since each value at a
+particular Array index is derived from the same key material it is recommended
+to choose the different key types you need from different Array indexes. This
+ensures that each key type was not derived from the same value.
+
+```
+# uuid : array index 0
+output.hex_keys[0]
+
+# encryption keypair : array index 1
+output.nacl_encryption_key_pairs[1]
+
+# signing keypair : array index 2
+output.nacl_signing_key_pairs[2]
+```
+
 ### Installation Security : Signed Ruby Gem
 
 The SessionKeys gem is cryptographically signed. To be sure the gem you install hasn’t
@@ -58,7 +82,7 @@ been tampered with you can install it using the following method:
 
 Add required public keys (if you haven’t already) as trusted certificates
 
-``` text
+```
 # Caveat: Gem certificates are trusted globally, such that adding a
 # cert.pem for one gem automatically trusts all gems signed by that cert.
 gem cert --add <(curl -Ls https://raw.githubusercontent.com/cryptosphere/rbnacl/master/bascule.cert)
@@ -100,13 +124,6 @@ for additional information.
 You can also clone the repository and verify the signatures locally using your
 own GnuPG installation. You can find my certificates and read about how to conduct
 this verification at [https://www.rempe.us/keys/](https://www.rempe.us/keys/).
-
-## Usage
-
-``` ruby
-keys = SessionKeys.generate('user@example.com', 'my strong passphrase')
-#=> {...}
-```
 
 ## Development
 
