@@ -44,6 +44,8 @@ $ gem install session_keys
 ## Usage
 
 ``` ruby
+require 'session_keys'
+
 SessionKeys.generate('user@example.com', 'my strong passphrase')
 
 {
