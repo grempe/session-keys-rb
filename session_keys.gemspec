@@ -1,4 +1,6 @@
 # coding: utf-8
+# frozen_string_literal: true
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'session_keys/version'
@@ -47,8 +49,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'rbnacl-libsodium', '~> 1.0'
   spec.add_dependency 'zxcvbn-ruby', '~> 0.1'
 
-  spec.add_development_dependency 'bundler', '~> 1.12'
-  spec.add_development_dependency 'rake', '~> 11.0'
+  spec.add_development_dependency 'bundler'
+  spec.add_development_dependency 'rake'
   spec.add_development_dependency 'minitest', '~> 5.0'
   spec.add_development_dependency 'pry', '~> 0.10'
   spec.add_development_dependency 'coveralls', '~> 0.8'
