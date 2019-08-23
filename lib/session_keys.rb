@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 
 require 'session_keys/version'
-require 'rbnacl/libsodium'
 require 'rbnacl'
 require 'zxcvbn'
 require 'base64'

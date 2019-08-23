@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Glenn Rempe']
   spec.email         = ['glenn@rempe.us']
 
-  spec.required_ruby_version = '>= 2.1.0'
+  spec.required_ruby_version = '>= 2.3.0'
 
   cert = File.expand_path('~/.gem-certs/gem-private_key_grempe.pem')
   if cert && File.exist?(cert)
@@ -45,15 +45,13 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rbnacl', '~> 4.0.1'
-  spec.add_dependency 'rbnacl-libsodium', '~> 1.0'
-  spec.add_dependency 'zxcvbn-ruby', '>= 0.1', '< 2.0'
+  spec.add_dependency 'rbnacl', '~> 7.0.0'
+  spec.add_dependency 'zxcvbn-ruby', '>= 1.0', '< 2.0'
 
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake'
+  spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'minitest', '~> 5.0'
-  spec.add_development_dependency 'pry', '~> 0.10'
+  spec.add_development_dependency 'pry', '~> 0.12'
   spec.add_development_dependency 'coveralls', '~> 0.8'
-  spec.add_development_dependency 'coco', '~> 0.14'
-  spec.add_development_dependency 'wwtd', '~> 1.3'
+  spec.add_development_dependency 'wwtd', '~> 1.4'
 end
