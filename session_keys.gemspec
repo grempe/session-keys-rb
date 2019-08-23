@@ -1,4 +1,3 @@
-# coding: utf-8
 # frozen_string_literal: true
 
 lib = File.expand_path('../lib', __FILE__)
@@ -43,9 +42,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'zxcvbn-ruby', '>= 1.0', '< 2.0'
 
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake', '~> 12.3'
+  spec.add_development_dependency 'coveralls', '~> 0.8.23'
   spec.add_development_dependency 'minitest', '~> 5.0'
   spec.add_development_dependency 'pry', '~> 0.12'
-  spec.add_development_dependency 'coveralls', '~> 0.8.23'
+  spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'wwtd', '~> 1.4'
 end
