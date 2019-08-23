@@ -45,7 +45,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'rbnacl', '~> 3.4.0'
+  spec.add_dependency 'rbnacl', '>= 3.4', '< 7.1'
   spec.add_dependency 'rbnacl-libsodium', '~> 1.0'
   spec.add_dependency 'zxcvbn-ruby', '>= 0.1', '< 2.0'
 
