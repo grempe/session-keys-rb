@@ -47,7 +47,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rbnacl', '~> 4.0.1'
   spec.add_dependency 'rbnacl-libsodium', '~> 1.0'
-  spec.add_dependency 'zxcvbn-ruby', '~> 0.1'
+  spec.add_dependency 'zxcvbn-ruby', '>= 0.1', '< 2.0'
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake'
