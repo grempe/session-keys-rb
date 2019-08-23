@@ -1,7 +1,6 @@
 # sessionKeys (Ruby)
 
 [![Gem Version](https://badge.fury.io/rb/session_keys.svg)](https://badge.fury.io/rb/session_keys)
-[![Dependency Status](https://gemnasium.com/badges/github.com/grempe/session-keys-rb.svg)](https://gemnasium.com/github.com/grempe/session-keys-rb)
 [![Build Status](https://travis-ci.org/grempe/session-keys-rb.svg?branch=master)](https://travis-ci.org/grempe/session-keys-rb)
 [![Coverage Status](https://coveralls.io/repos/github/grempe/session-keys-rb/badge.svg?branch=master)](https://coveralls.io/github/grempe/session-keys-rb?branch=master)
 [![Code Climate](https://codeclimate.com/github/grempe/session-keys-rb/badges/gpa.svg)](https://codeclimate.com/github/grempe/session-keys-rb)
@@ -25,25 +24,25 @@ project [grempe/session-keys-js](https://github.com/grempe/session-keys-js)
 
 Add this line to your application's Gemfile:
 
-``` ruby
+```ruby
 gem 'session_keys'
 ```
 
 And then execute:
 
-``` text
+```text
 $ bundle
 ```
 
 Or install it yourself as:
 
-``` text
+```text
 $ gem install session_keys
 ```
 
 ## Usage
 
-``` ruby
+```ruby
 require 'session_keys'
 
 SessionKeys.generate('user@example.com', 'my strong passphrase')
@@ -96,17 +95,17 @@ mode. Since the `session_keys` gem depends on one or more gems that are not cryp
 signed you will likely need to use `MediumSecurity`. You should receive a warning
 if any signed gem does not match its signature.
 
-``` text
+```text
 # All dependent gems must be signed and verified.
 gem install session_keys -P HighSecurity
 ```
 
-``` text
+```text
 # All signed dependent gems must be verified.
 gem install session_keys -P MediumSecurity
 ```
 
-``` text
+```text
 # Same as above, except Bundler only recognizes
 # the long --trust-policy flag, not the short -P
 bundle --trust-policy MediumSecurity
