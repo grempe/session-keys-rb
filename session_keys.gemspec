@@ -13,12 +13,6 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.3.0'
 
-  cert = File.expand_path('~/.gem-certs/gem-private_key_grempe.pem')
-  if cert && File.exist?(cert)
-    spec.signing_key = cert
-    spec.cert_chain = ['certs/gem-public_cert_grempe.pem']
-  end
-
   spec.summary = <<-EOF
     SessionKeys generates deterministic user IDs and NaCl encryption/signing
     keypairs from an identifier, such as a username or email address, a
@@ -52,6 +46,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 12.3'
   spec.add_development_dependency 'minitest', '~> 5.0'
   spec.add_development_dependency 'pry', '~> 0.12'
-  spec.add_development_dependency 'coveralls', '~> 0.8'
+  spec.add_development_dependency 'coveralls', '~> 0.8.23'
   spec.add_development_dependency 'wwtd', '~> 1.4'
 end

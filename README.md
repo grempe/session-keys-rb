@@ -76,43 +76,6 @@ output.nacl_encryption_key_pairs[1]
 output.nacl_signing_key_pairs[2]
 ```
 
-### Installation Security : Signed Ruby Gem
-
-The SessionKeys gem is cryptographically signed. To be sure the gem you install hasn’t
-been tampered with you can install it using the following method:
-
-Add required public keys (if you haven’t already) as trusted certificates
-
-```
-# Caveat: Gem certificates are trusted globally, such that adding a
-# cert.pem for one gem automatically trusts all gems signed by that cert.
-gem cert --add <(curl -Ls https://raw.githubusercontent.com/cryptosphere/rbnacl/master/bascule.cert)
-gem cert --add <(curl -Ls https://raw.github.com/grempe/session-keys-rb/master/certs/gem-public_cert_grempe.pem)
-```
-
-To install, it is possible to specify either `HighSecurity` or `MediumSecurity`
-mode. Since the `session_keys` gem depends on one or more gems that are not cryptographically
-signed you will likely need to use `MediumSecurity`. You should receive a warning
-if any signed gem does not match its signature.
-
-```text
-# All dependent gems must be signed and verified.
-gem install session_keys -P HighSecurity
-```
-
-```text
-# All signed dependent gems must be verified.
-gem install session_keys -P MediumSecurity
-```
-
-```text
-# Same as above, except Bundler only recognizes
-# the long --trust-policy flag, not the short -P
-bundle --trust-policy MediumSecurity
-```
-
-You can [learn more about security and signed Ruby Gems](http://guides.rubygems.org/security/).
-
 ### Installation Security : Signed Git Commits
 
 Most, if not all, of the commits and tags to the repository for this code are
